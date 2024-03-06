@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="join.css">
+    <script src="axios.min.js"></script>
+</head>
+<body>
+    <main>
+        <h1>deoksu join</h1>
+        <form>
+            <input type="text" id="id" name="id" placeholder="아이디" value="test">
+            <span class="id-comment"></span>
+            <input type="text" id="pw" name="pw" placeholder="패스워드" value="test">
+            <span class="pw-comment"></span>
+            <input type="text" id="pwc" placeholder="패스워드 확인" value="test">
+            <span class="pwc-comment"></span>
+            <input type="text" id="name" name="name" placeholder="이름" value="test">
+            <span class="name-comment"></span>
+            <select id="gender" name="gender" aria-placeholder="성별">
+                <option>man</option>
+                <option>woman</option>
+            </select>
+            <span class="gender-comment"></span>
+            <input type="date" id="birthday" name="birthday" value="2020-01-01">
+            <span class="id-comment"></span>
+            <input type="text" id="email" name="email" placeholder="{id}@naver.com" value="test@naver.com">
+            <span class="email-comment"></span>
+            <input type="text" id="phon" name="phon" placeholder="핸드폰 번호" value="010-1234-1234">
+            <span class="phon-comment"></span>
+            <input class="btn" type="button" value="확인" id="ok">
+            <input class="btn" type="button" value="취소" id="cancel" onclick="location.href='/'">
+        </form>
+    </main>
+</body>
+<script src="join.js"></script>
+</html>
