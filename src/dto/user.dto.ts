@@ -1,7 +1,9 @@
-import { IsInt, IsString, IsNotEmpty, IsEmail, IsPhoneNumber,IsMobilePhone } from 'class-validator';
+import { IsInt, IsString, IsNotEmpty, IsEmail, IsMobilePhone } from 'class-validator';
+import { EmailDto } from './email.dto'
+import { PhonDto } from './phon.dto'
 
 
-export class UserDto {
+export class UserDto implements EmailDto, PhonDto{
 
     @IsString()
     @IsNotEmpty()

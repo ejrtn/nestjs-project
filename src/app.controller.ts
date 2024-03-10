@@ -8,4 +8,10 @@ export class AppController {
     @Get("/")
     @Render("login")
     getLogin() {}
+
+    @Get("/programmerInfo")
+    @Render('programmerInfo')
+    programmerInfo(){
+        return 'programmerInfo'
+    }
 }

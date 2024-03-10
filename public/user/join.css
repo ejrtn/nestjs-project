@@ -36,15 +36,13 @@ main form select{
     margin-bottom: 10px;
 }
 main form .email{
-    display: flex;
-    align-items: center;
-}
-main form .email span{
-    margin: 0px 5px 10px 5px;
-}
-main form .email input{
     width: 135px;
 }
+main form span{
+    margin-bottom: 10px;
+    color: #3F51B5;
+}
+
 main form .btn{
     width: 355px;
     background-color: #3F51B5;
@@ -52,4 +50,8 @@ main form .btn{
     font-weight: bold;
     border: none;
     cursor: pointer;
+}
+
+.color-red{
+    color: red;
 }

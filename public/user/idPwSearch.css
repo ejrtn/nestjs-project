@@ -1,0 +1,50 @@
+html, body {
+    height: 100%;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+main{
+    display: flex;
+    flex-flow: column;
+    width: 375px;
+}
+
+main h1{
+    font-size: 47px;
+    font-weight: bold;
+    color: #3F51B5;
+    text-align: center;
+}
+
+main input{
+    font-size: 18px;
+    padding: 13px;
+    margin-bottom: 10px;
+}
+
+main div{
+    display: flex;
+}
+
+main div input{
+    margin-right: 10px;
+}
+
+main label {
+    font-size: 18px;
+    background-color: #3F51B5;
+    margin-bottom: 10px;
+    padding: 13px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    width: 116px;
+}

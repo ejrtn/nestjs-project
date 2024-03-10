@@ -12,19 +12,14 @@ export class UserRepository {
     }
 
     insert(user: UserDto) {
-        return this.#userRepository
-        .createQueryBuilder()
-        .insert()
-        .into(UserDto)
-        .values({
-            id: user.id,
-            pw: user.pw,
-            name: user.name, 
-            gender: user.gender, 
-            birthday: user.birthday, 
-            email: user.email,
-            phon: user.phon,
-        })
-        .execute();
+        return this.#userRepository.insert(user)
+    }
+
+    idCheck(id:string): Promise<User> {
+        return this.#userRepository.findOne({where:{id:id}})
+    }
+
+    loginCheck(data:any): Promise<User> {
+        return this.#userRepository.findOne({where:{id:data.id,pw:data.pw}})
     }
 }
