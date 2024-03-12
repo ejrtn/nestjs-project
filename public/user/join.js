@@ -12,6 +12,8 @@ document.querySelector("#ok").addEventListener("click", async function () {
         }
     }
 
+    if(document.querySelector(".codeCheck").title === ''){return false}
+
     let userDto = {
         id: document.querySelector("#id").value,
         pw: document.querySelector("#pw").value,
@@ -19,7 +21,6 @@ document.querySelector("#ok").addEventListener("click", async function () {
         gender: document.querySelector("#gender").value,
         birthday: document.querySelector("#birthday").value,
         email: document.querySelector("#email").value,
-        phon: document.querySelector("#phon").value,
     }
 
     axios({
@@ -27,7 +28,6 @@ document.querySelector("#ok").addEventListener("click", async function () {
         url: '/user/joinInsert', //통신할 페이지
         data: userDto //인자로 보낼 데이터
     }).then(response => {
-        console.log(response);
         if (response === 'joinInsert') { location.href = '/' }
     }).catch(error => {
         console.log(error);
@@ -95,44 +95,26 @@ document.querySelector("#name").addEventListener("focusout", function () {
 
 
 
-document.querySelector("#email").addEventListener("focusout", function () {
+document.querySelector("#email_push").addEventListener("click", function () {
     if (this.value === "") {
         document.querySelector(".email-comment").classList.add('color-red')
         document.querySelector(".email-comment").textContent = '이메일 입력해주세요.'
     } else {
         axios({
             method: 'post', //통신 방식
-            url: '/user/emailStats', //통신할 페이지
-            data: { 'email': document.querySelector("#email").value } //인자로 보낼 데이터
+            url: '/user/emailPush', //통신할 페이지
+            data: { 'email': document.querySelector("#email").value,
+                    'name': document.querySelector("#name").value, } //인자로 보낼 데이터
         }).then(response => {
-            if (response.data != '') {
-                document.querySelector(".email-comment").classList.remove('color-red')
-                document.querySelector(".email-comment").textContent = '사용 가능합니다.'
-            }
+           document.querySelector("#pushCode").value = response.data
         }).catch(error => {
-            document.querySelector(".email-comment").classList.add('color-red')
-            document.querySelector(".email-comment").textContent = '이메일 형식 확인해주세요.'
+            console.log(error)
         })
     }
 })
 
-document.querySelector("#phon").addEventListener("focusout", function () {
-    if (this.value === "") {
-        document.querySelector(".phon-comment").classList.add('color-red')
-        document.querySelector(".phon-comment").textContent = '핸드폰 번호 입력해주세요.'
-    } else {
-        axios({
-            method: 'post', //통신 방식
-            url: '/user/phonStats', //통신할 페이지
-            data: { 'phon': document.querySelector("#phon").value } //인자로 보낼 데이터
-        }).then(response => {
-            if (response.data != '') {
-                document.querySelector(".phon-comment").classList.remove('color-red')
-                document.querySelector(".phon-comment").textContent = '사용 가능합니다.'
-            }
-        }).catch(error => {
-            document.querySelector(".phon-comment").classList.add('color-red')
-            document.querySelector(".phon-comment").textContent = '핸드폰 번호 형식 확인해주세요.'
-        })
+document.querySelector(".codeCheck").addEventListener("click",function(){
+    if(document.querySelector("#pushCode").value === document.querySelector("#code").value){
+        document.querySelector(".codeCheck").title = 'ok'
     }
 })

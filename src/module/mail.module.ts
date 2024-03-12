@@ -16,13 +16,14 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
                 transport:{
                     host:process.env.EMAIL_HOST,
                     port:process.env.EMAIL_PORT,
+                    secure:false,
                     auth:{
                         user:process.env.EMAIL_USER,
                         pass:process.env.EMAIL_PASS
                     }
                 },
                 template:{
-                    dir: join(__dirname, '..', 'views'),
+                    dir: join('views'),
                     adapter: new HandlebarsAdapter(),
                     options:{
                         strict:true,
@@ -32,4 +33,4 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
         })
     ]
 })
-export class MailModule { }
+export class MailModule {}

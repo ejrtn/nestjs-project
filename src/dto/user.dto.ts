@@ -1,9 +1,7 @@
 import { IsInt, IsString, IsNotEmpty, IsEmail, IsMobilePhone } from 'class-validator';
-import { EmailDto } from './email.dto'
-import { PhonDto } from './phon.dto'
 
 
-export class UserDto implements EmailDto, PhonDto{
+export class UserDto{
 
     @IsString()
     @IsNotEmpty()
@@ -29,9 +27,4 @@ export class UserDto implements EmailDto, PhonDto{
     @IsNotEmpty()
     @IsEmail()
     email: string;
-
-    @IsString()
-    @IsNotEmpty()
-    @IsMobilePhone()
-    phon: string;
 }

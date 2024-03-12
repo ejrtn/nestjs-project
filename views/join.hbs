@@ -23,10 +23,16 @@
                 <option>여성</option>
             </select>
             <input type="date" id="birthday" name="birthday" value="2020-01-01">
-            <input type="text" id="email" name="email" placeholder="{id}@naver.com" value="test@naver.com">
+            <div>
+                <input type="text" id="email" name="email" placeholder="{id}@naver.com" value="dlstn153@naver.com">
+                <label id="email_push">인증보내기</label>
+            </div>
+            <div>
+                <input type="text" id="code" placeholder="인증 입력">
+                <input type="hidden" id="pushCode">
+                <label class="codeCheck">인증확인</label>
+            </div>
             <span class="email-comment"></span>
-            <input type="text" id="phon" name="phon" placeholder="핸드폰 번호" value="010-1234-1234">
-            <span class="phon-comment"></span>
             <input class="btn" type="button" value="확인" id="ok">
             <input class="btn" type="button" value="취소" id="cancel" onclick="location.href='/'">
         </form>

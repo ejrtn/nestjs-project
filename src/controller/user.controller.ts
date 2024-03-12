@@ -1,13 +1,12 @@
 import { Controller, Get, Render, Post, Body, Param,Req,Res, Redirect, Query } from '@nestjs/common';
 import { UserService } from '../service/user.service';
+import { MailService } from '../service/mail.service';
 import { UserDto } from '../dto/user.dto';
-import { EmailDto } from '../dto/email.dto';
-import { PhonDto } from '../dto/phon.dto';
 import { User } from 'src/entity/user.entity';
 
 @Controller('user')
 export class UserController {
-    constructor(private readonly userService: UserService) { }
+    constructor(private readonly userService: UserService, private readonly mailService:MailService) { }
 
     @Post("/joinInsert")
     async joinInsert(@Body() userDto:UserDto): Promise<string>{
@@ -23,23 +22,13 @@ export class UserController {
         })
     }
 
-    @Post("/emailStats")
-    async emailStats(@Body() emailDto:EmailDto){
-        return emailDto.email
-    }
-
-    @Post("/phonStats")
-    async phonStats(@Body() phonDto:PhonDto){
-        return phonDto.phon
-    }
-
     @Get("/join")
     @Render("join")
     getJoin() {}
 
     @Get("/idPwSearch")
     @Render("idPwSearch")
-    getㅑdPwSearch() {}
+    getIdPwSearch() {}
 
     @Post("/loginCheck")
     async getLoginCheck(@Body() data:any) {
@@ -48,5 +37,8 @@ export class UserController {
         })
     }
 
-    
+    @Post("/emailPush")
+    async emailPush(@Body() data:any): Promise<string>{
+        return this.mailService.sendCode(data.name,data.email)
+    }
 }
